@@ -1,19 +1,18 @@
-// src/app/students/page.tsx
-'use client';
+"use client";
 
-import { Container, Modal } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
-import { useEffect, useState } from 'react';
-import { Student, StudentFormData } from '../modules/students/types/student';
-import { mockApi } from '../modules/students/utils/mockApi';
+import { Container } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
+import { useEffect, useState } from "react";
+import { Student, StudentFormData } from "../modules/students/types/student";
+import { mockApi } from "../modules/students/utils/mockApi";
 
-import StudentTable from '../modules/students/components/StudentTable';
-import StudentFormModal from '../modules/students/components/StudentFormModal';
-import { parseExcelFile } from '../modules/students/utils/excelParser';
+import StudentTable from "../modules/students/components/StudentTable";
+import StudentFormModal from "../modules/students/components/StudentFormModal";
+import { parseExcelFile } from "../modules/students/utils/excelParser";
 
 export default function StudentsPage() {
   const [students, setStudents] = useState<Student[]>([]);
-  const [filterName, setFilterName] = useState('');
+  const [filterName, setFilterName] = useState("");
   const [filterAttending, setFilterAttending] = useState<boolean | undefined>(
     undefined
   );
@@ -37,12 +36,11 @@ export default function StudentsPage() {
     setPage(1);
   };
 
-  const filtered = students.filter((s) => {
-    return (
+  const filtered = students.filter(
+    (s) =>
       s.name.toLowerCase().includes(filterName.toLowerCase()) &&
       (filterAttending === undefined || s.isAttending === filterAttending)
-    );
-  });
+  );
 
   const paged = filtered.slice((page - 1) * pageSize, page * pageSize);
   const totalPages = Math.ceil(filtered.length / pageSize);
@@ -79,9 +77,9 @@ export default function StudentsPage() {
   };
 
   const handleBulkInsert = async () => {
-    const input = document.createElement('input');
-    input.type = 'file';
-    input.accept = '.xlsx,.xls';
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = ".xlsx,.xls";
 
     input.onchange = async (e: Event) => {
       const target = e.target as HTMLInputElement;
@@ -116,17 +114,13 @@ export default function StudentsPage() {
         onFilterChange={handleFilterChange}
       />
 
-      <Modal
+      <StudentFormModal
         opened={opened}
         onClose={close}
-        title={editingStudent ? 'Edit Student' : 'Add Student'}
-      >
-        <StudentFormModal
-          initial={editingStudent ?? null}
-          onSubmit={handleSubmit}
-          onCancel={close}
-        />
-      </Modal>
+        initial={editingStudent ?? undefined}
+        onSubmit={handleSubmit}
+        mode={editingStudent ? "edit" : "add"}
+      />
     </Container>
   );
 }

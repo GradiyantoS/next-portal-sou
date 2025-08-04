@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import {
   Button,
@@ -8,10 +8,10 @@ import {
   Pagination,
   Checkbox,
   Stack,
-} from '@mantine/core';
-import { IconSearch, IconPlus, IconUpload } from '@tabler/icons-react';
-import { useState } from 'react';
-import { Student } from '../types/student';
+} from "@mantine/core";
+import { IconSearch, IconPlus, IconUpload } from "@tabler/icons-react";
+import { useState } from "react";
+import { Student } from "../types/students";
 
 interface Props {
   students: Student[];
@@ -99,7 +99,7 @@ export default function StudentTable({
               <Table.Td>{student.name}</Table.Td>
               <Table.Td>{student.nim}</Table.Td>
               <Table.Td>{student.averageScore}</Table.Td>
-              <Table.Td>{student.isAttending ? 'Yes' : 'No'}</Table.Td>
+              <Table.Td>{student.isAttending ? "Yes" : "No"}</Table.Td>
               <Table.Td>
                 <Group gap="xs">
                   <Button
