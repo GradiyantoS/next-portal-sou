@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { MantineProvider } from '@mantine/core';
+import { MantineProvider } from "@mantine/core";
 
 export function MantineWrapper({ children }: { children: React.ReactNode }) {
   return (

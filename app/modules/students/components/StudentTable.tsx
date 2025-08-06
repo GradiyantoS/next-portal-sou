@@ -11,7 +11,7 @@ import {
 } from "@mantine/core";
 import { IconSearch, IconPlus, IconUpload } from "@tabler/icons-react";
 import { useState } from "react";
-import { Student } from "../types/students";
+import { Student } from "../types/student";
 
 interface Props {
   students: Student[];
@@ -55,7 +55,6 @@ export default function StudentTable({
       <Group>
         <TextInput
           placeholder="Search by name"
-          icon={<IconSearch size={16} />}
           value={name}
           onChange={(e) => setName(e.currentTarget.value)}
         />
