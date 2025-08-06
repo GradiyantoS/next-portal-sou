@@ -1,9 +1,9 @@
 import { Readable } from "node:stream";
 import { type NextRequest } from "next/server";
 import Busboy from "busboy";
-import { supabase } from "@/utils/dbClient";
-import { mapExcelData } from "@/utils/api/parseExcel";
-import { type GuestRow } from "@/types/guest";
+import { supabase } from "../../../../utils/dbClient";
+import { mapExcelData } from "../../../../utils/api/parseExcel";
+import { type GuestRow } from "../../../../modules/students/types/guest";
 
 export const runtime = "nodejs";
 

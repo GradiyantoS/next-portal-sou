@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { supabase } from "@/utils/dbClient";
+import { supabase } from "../../../utils/dbClient";
 
 export async function GET(
   req: NextRequest,
