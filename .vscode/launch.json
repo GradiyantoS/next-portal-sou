@@ -1,0 +1,32 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Next.js: Debug Server",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/next/dist/bin/next",
+      "args": ["dev"],
+      "runtimeArgs": ["--inspect"], // start Node inspector on 9229
+      "env": { "NODE_OPTIONS": "--enable-source-maps" },
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "autoAttachChildProcesses": true,
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "name": "Next.js: Debug in Chrome",
+      "type": "pwa-chrome",
+      "request": "launch",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}",
+      "sourceMaps": true
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Start Next.js + Browser",
+      "configurations": ["Next.js: Debug Server", "Next.js: Debug in Chrome"]
+    }
+  ]
+}

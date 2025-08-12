@@ -1,25 +1,21 @@
-import "@mantine/core/styles.css";
-import { ColorSchemeScript } from "@mantine/core";
-import React from "react";
-import { MantineWrapper } from "./mantine-wrapper";
+import '@mantine/core/styles.css';
+import { ColorSchemeScript } from '@mantine/core';
+import React from 'react';
+import { MantineRoot } from './mantine-root';
 
 export const metadata = {
-  title: "My App",
-  description: "Using Mantine with Next.js",
+  title: 'Guests',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
-        <ColorSchemeScript />
+        {/* v8: still valid; choose 'light' | 'dark' | 'auto' */}
+        <ColorSchemeScript defaultColorScheme="light" />
       </head>
       <body>
-        <MantineWrapper>{children}</MantineWrapper>
+        <MantineRoot>{children}</MantineRoot>
       </body>
     </html>
   );
